@@ -1,0 +1,18 @@
+# Automated GDD
+
+> A portable game development skill for AI coding agents: current game design, linked JSON gameplay parameters, Markdown views, and scoped mechanic experiments.
+
+Use it when a developer needs to maintain a GDD during AI-assisted game development, track game-balance values, check cross-system consequences, or prototype mechanics without adopting them immediately. It is engine-independent; game-specific loaders/adapters are not bundled.
+
+## Entry points
+
+- [README](https://github.com/AG-albino/automated-gdd/blob/main/README.md): Explanation, examples, downloads, installation.
+- [Skill instructions](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/SKILL.md): Agent workflow and activation scope.
+- [Data contract](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/references/data-contract.md): JSON records, numbers, bindings, and experiments.
+- [Setup interview](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/references/onboarding.md): Three sequential questions.
+- [Optional steward](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/references/steward.md): Delegated maintenance and fallback.
+- [Download skill](https://github.com/AG-albino/automated-gdd/releases/latest/download/automated-gdd.zip): Self-contained ZIP with the full skill folder.
+
+## Requirements
+
+Instructions can be read by an agent with project-file access. The optional CLI uses Python 3.9+ and the standard library. Subagent behavior depends on client capabilities. Numeric checks cover registered bindings; engine verification and playtesting remain project-specific.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Automated GDD"
+  short_description: "Living game design, linked values and experiments"
+  default_prompt: "Use $automated-gdd to set up an automated game design document in this project."

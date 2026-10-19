@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "revision": 1,
+  "project": {
+    "title": "",
+    "description": "",
+    "genre": [],
+    "setting": "",
+    "visual_style": "",
+    "perspective": "",
+    "engine": null,
+    "phase": "prototype"
+  },
+  "workflow": {
+    "steward": "main",
+    "preferred_model": null,
+    "numeric_mode": "mirrored"
+  },
+  "systems": [],
+  "parameters": {},
+  "open_questions": [],
+  "decisions": [],
+  "coverage": {
+    "status": "partial",
+    "reviewed_paths": [],
+    "unregistered": []
+  }
+}
