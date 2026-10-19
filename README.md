@@ -10,7 +10,7 @@ Use the skill at https://github.com/AG-albino/automated-gdd to set up an automat
 
 [![Follow @Albino_design on X](https://img.shields.io/badge/Follow_on_X-111111?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Albino_design)
 
-![Automated GDD — Game design your AI agent can keep up with](docs/assets/banner.svg)
+![Automated GDD — Automated Game Design Document: check connected systems, keep numbers in sync, and experiment separately](docs/assets/banner.png)
 
 A game development skill for AI coding agents. Keep your **game design document, gameplay numbers, and mechanic experiments** connected as you build.
 

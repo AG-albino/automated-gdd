@@ -24,13 +24,14 @@ def main():
     dist.mkdir(exist_ok=True)
     archive = dist / 'automated-gdd.zip'
     files = [root / p for p in ('SKILL.md', 'README.md', 'LICENSE', 'VERSION', 'llms.txt',
-             'scripts/gdd.py', 'scripts/test_gdd.py', 'docs/assets/banner.svg')]
+             'scripts/gdd.py', 'scripts/test_gdd.py')]
     for directory in ('agents', 'assets', 'references'):
         files.extend(p for p in (root / directory).rglob('*') if p.is_file())
     for path in files:
         text = path.read_text(encoding='utf-8')
         if '\ufffd' in text:
             raise ValueError('Invalid replacement character in ' + str(path))
+    files.append(root / 'docs/assets/banner.png')
     readme = (root / 'README.md').read_text(encoding='utf-8')
     expected = ('```text\nUse the skill at https://github.com/AG-albino/automated-gdd '
                 'to set up an automated game design document (GDD) in my project.\n```')
