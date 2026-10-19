@@ -2,6 +2,8 @@
 Use the skill at https://github.com/AG-albino/automated-gdd to set up an automated game design document (GDD) in my project.
 ```
 
+[![Follow @Albino_design on X](https://img.shields.io/badge/Follow_on_X-111111?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Albino_design)
+
 ![Automated GDD — Game design your AI agent can keep up with](docs/assets/banner.svg)
 
 # Automated GDD
