@@ -4,7 +4,7 @@ description: "Automated game design document (GDD) for AI-assisted game developm
 license: MIT
 metadata:
   author: AG-albino
-  version: "1.0.2"
+  version: "1.0.1"
 ---
 
 # Automated GDD
