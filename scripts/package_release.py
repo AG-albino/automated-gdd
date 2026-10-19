@@ -23,7 +23,7 @@ def main():
     dist = root / 'dist'
     dist.mkdir(exist_ok=True)
     archive = dist / 'automated-gdd.zip'
-    files = [root / p for p in ('SKILL.md', 'README.md', 'LICENSE', 'VERSION',
+    files = [root / p for p in ('SKILL.md', 'README.md', 'LICENSE', 'VERSION', 'llms.txt',
              'scripts/gdd.py', 'scripts/test_gdd.py', 'docs/assets/banner.svg')]
     for directory in ('agents', 'assets', 'references'):
         files.extend(p for p in (root / directory).rglob('*') if p.is_file())
@@ -63,6 +63,9 @@ def main():
         for path in files:
             if path.read_bytes() != (extracted / path.relative_to(root)).read_bytes():
                 raise ValueError('Archive differs from source: ' + str(path))
+        for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)', readme):
+            if not target.startswith(('https://', 'http://', '#')) and not (extracted / target.split('#')[0]).is_file():
+                raise ValueError('Broken README link inside release ZIP: ' + target)
         project = scratch / 'test game'
         (project / 'design').mkdir(parents=True)
         original = '# Local rules\n\nKeep these instructions.\n'
