@@ -1,3 +1,9 @@
+# Automated GDD
+
+[![Checks](https://github.com/AG-albino/automated-gdd/actions/workflows/checks.yml/badge.svg)](https://github.com/AG-albino/automated-gdd/actions/workflows/checks.yml)
+[![Download skill](https://img.shields.io/badge/Download-skill_ZIP-4bd9b4)](https://github.com/AG-albino/automated-gdd/releases/latest/download/automated-gdd.zip)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 ```text
 Use the skill at https://github.com/AG-albino/automated-gdd to set up an automated game design document (GDD) in my project.
 ```
@@ -5,12 +11,6 @@ Use the skill at https://github.com/AG-albino/automated-gdd to set up an automat
 [![Follow @Albino_design on X](https://img.shields.io/badge/Follow_on_X-111111?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Albino_design)
 
 ![Automated GDD — Game design your AI agent can keep up with](docs/assets/banner.svg)
-
-# Automated GDD
-
-[![Checks](https://github.com/AG-albino/automated-gdd/actions/workflows/checks.yml/badge.svg)](https://github.com/AG-albino/automated-gdd/actions/workflows/checks.yml)
-[![Download skill](https://img.shields.io/badge/Download-skill_ZIP-4bd9b4)](https://github.com/AG-albino/automated-gdd/releases/latest/download/automated-gdd.zip)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 A game development skill for AI coding agents. Keep your **game design document, gameplay numbers, and mechanic experiments** connected as you build.
 

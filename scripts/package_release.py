@@ -34,8 +34,11 @@ def main():
     readme = (root / 'README.md').read_text(encoding='utf-8')
     expected = ('```text\nUse the skill at https://github.com/AG-albino/automated-gdd '
                 'to set up an automated game design document (GDD) in my project.\n```')
-    if not readme.startswith(expected):
-        raise ValueError('README must start with the copyable English prompt')
+    if not readme.startswith('# Automated GDD\n\n[![Checks]'):
+        raise ValueError('README must start with the heading and status badges')
+    prompt_position = readme.find(expected)
+    if prompt_position < 0 or prompt_position > readme.find('![Automated GDD —'):
+        raise ValueError('README must include the copyable English prompt before the banner')
     if re.search(r'[\u0400-\u04ff]', readme):
         raise ValueError('README must be entirely English')
     for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)', readme):
