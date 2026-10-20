@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 
-MODULE_PATH = Path(__file__).with_name('gdd.py')
+MODULE_PATH = Path(__file__).resolve().parents[1] / 'skills' / 'automated-gdd' / 'scripts' / 'gdd.py'
 if MODULE_PATH.exists():
     spec = importlib.util.spec_from_file_location('gdd', MODULE_PATH)
     gdd = importlib.util.module_from_spec(spec)

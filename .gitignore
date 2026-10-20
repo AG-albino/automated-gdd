@@ -4,3 +4,11 @@ __pycache__/
 dist/
 .DS_Store
 Thumbs.db
+
+# Local author notes and artwork; the public banner is hosted as a release asset.
+/docs/discovery.md
+/docs/assets/
+/output/
+/tmp/
+.coverage
+htmlcov/

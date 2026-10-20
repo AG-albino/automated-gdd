@@ -7,10 +7,10 @@ Use it when a developer needs to maintain a GDD during AI-assisted game developm
 ## Entry points
 
 - [README](https://github.com/AG-albino/automated-gdd/blob/main/README.md): Explanation, examples, downloads, installation.
-- [Skill instructions](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/SKILL.md): Agent workflow and activation scope.
-- [Data contract](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/references/data-contract.md): JSON records, numbers, bindings, and experiments.
-- [Setup interview](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/references/onboarding.md): Three sequential questions.
-- [Optional steward](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/references/steward.md): Delegated maintenance and fallback.
+- [Skill instructions](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/skills/automated-gdd/SKILL.md): Agent workflow and activation scope.
+- [Data contract](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/skills/automated-gdd/references/data-contract.md): JSON records, numbers, bindings, and experiments.
+- [Setup interview](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/skills/automated-gdd/references/onboarding.md): Three sequential questions.
+- [Optional steward](https://raw.githubusercontent.com/AG-albino/automated-gdd/main/skills/automated-gdd/references/steward.md): Delegated maintenance and fallback.
 - [Download skill](https://github.com/AG-albino/automated-gdd/releases/latest/download/automated-gdd.zip): Self-contained ZIP with the full skill folder.
 
 ## Requirements

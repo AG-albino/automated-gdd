@@ -10,7 +10,7 @@ Use the skill at https://github.com/AG-albino/automated-gdd to set up an automat
 
 [![Follow @Albino_design on X](https://img.shields.io/badge/Follow_on_X-111111?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Albino_design)
 
-![Automated GDD — Automated Game Design Document: check connected systems, keep numbers in sync, and experiment separately](docs/assets/banner.png)
+![Automated GDD — Automated Game Design Document: check connected systems, keep numbers in sync, and experiment separately](https://github.com/AG-albino/automated-gdd/releases/download/v1.0.1/banner.png)
 
 A game development skill for AI coding agents. Keep your **game design document, gameplay numbers, and mechanic experiments** connected as you build.
 
@@ -29,6 +29,8 @@ npx skills add AG-albino/automated-gdd --skill automated-gdd
 ```
 
 The CLI lets you choose an agent. Its installer requires Node.js; the skill itself doesn't. Reading the instructions needs no runtime. The included checks use **Python 3.9+** and its standard library, with no pip packages.
+
+The installable skill lives in [`skills/automated-gdd/`](skills/automated-gdd). Both the ready-to-use ZIP and the Skills CLI install only that folder's contents. Tests, release tools, repository documentation, and banner images stay out of your installation. If you download the repository source ZIP, use its `skills/automated-gdd` folder.
 
 If your agent can't fetch a GitHub link, download the ZIP and ask it to read the extracted `SKILL.md`. It needs the accompanying files too.
 
@@ -113,7 +115,7 @@ The workflow is engine-independent. It doesn't include ready-made Godot, Unity, 
 
 Checks cover **registered values and bindings**. They don't prove every number was discovered, execute documented formulas, or judge whether a mechanic feels good. Engine runs and playtesting still matter. Maintenance happens during agent tasks or checks you configure; there is no background watcher.
 
-For implementation details, see the [skill instructions](SKILL.md), [JSON data contract](references/data-contract.md), and [optional steward workflow](references/steward.md). For a short file map, see [llms.txt](llms.txt).
+For implementation details, see the [skill instructions](skills/automated-gdd/SKILL.md), [JSON data contract](skills/automated-gdd/references/data-contract.md), and [optional steward workflow](skills/automated-gdd/references/steward.md). For a short file map, see [llms.txt](llms.txt).
 
 ## Contribute
 
@@ -122,7 +124,7 @@ Report a concrete mismatch or confusing interaction in [Issues](https://github.c
 Run the helper tests before submitting changes:
 
 ```sh
-python scripts/test_gdd.py
+python tests/test_gdd.py
 ```
 
 Licensed under [MIT](LICENSE).

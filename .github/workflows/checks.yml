@@ -25,6 +25,6 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - name: Test GDD behavior
-        run: python scripts/test_gdd.py
+        run: python tests/test_gdd.py
       - name: Build and smoke-test the installable ZIP
-        run: python scripts/package_release.py
+        run: python tools/package_release.py

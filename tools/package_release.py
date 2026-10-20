@@ -20,18 +20,19 @@ def run(helper, root, command, *options):
 
 def main():
     root = Path(__file__).resolve().parent.parent
+    skill = root / 'skills' / 'automated-gdd'
     dist = root / 'dist'
     dist.mkdir(exist_ok=True)
     archive = dist / 'automated-gdd.zip'
-    files = [root / p for p in ('SKILL.md', 'README.md', 'LICENSE', 'VERSION', 'llms.txt',
-             'scripts/gdd.py', 'scripts/test_gdd.py')]
-    for directory in ('agents', 'assets', 'references'):
-        files.extend(p for p in (root / directory).rglob('*') if p.is_file())
+    relative_paths = ('SKILL.md', 'LICENSE', 'VERSION', 'agents/openai.yaml',
+                      'assets/game.template.json', 'assets/project-workflow.md',
+                      'references/data-contract.md', 'references/onboarding.md',
+                      'references/steward.md', 'scripts/gdd.py')
+    files = [skill / p for p in relative_paths]
     for path in files:
         text = path.read_text(encoding='utf-8')
         if '\ufffd' in text:
             raise ValueError('Invalid replacement character in ' + str(path))
-    files.append(root / 'docs/assets/banner.png')
     readme = (root / 'README.md').read_text(encoding='utf-8')
     expected = ('```text\nUse the skill at https://github.com/AG-albino/automated-gdd '
                 'to set up an automated game design document (GDD) in my project.\n```')
@@ -43,16 +44,19 @@ def main():
     if re.search(r'[\u0400-\u04ff]', readme):
         raise ValueError('README must be entirely English')
     for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)', readme):
-        if not target.startswith(('https://', 'http://', '#')) and not (root / target.split('#')[0]).is_file():
+        if not target.startswith(('https://', 'http://', '#')) and not (root / target.split('#')[0]).exists():
             raise ValueError('Broken local README link: ' + target)
-    frontmatter = (root / 'SKILL.md').read_text(encoding='utf-8').split('---', 2)[1]
+    frontmatter = (skill / 'SKILL.md').read_text(encoding='utf-8').split('---', 2)[1]
     if not re.search(r'^name: automated-gdd$', frontmatter, re.M):
         raise ValueError('Unexpected skill name')
     if not re.search(r'^description: .+', frontmatter, re.M):
         raise ValueError('Missing skill description')
+    version = (skill / 'VERSION').read_text(encoding='utf-8').strip()
+    if not re.search(r'^  version: "' + re.escape(version) + r'"$', frontmatter, re.M):
+        raise ValueError('Skill metadata and VERSION must agree')
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as package:
         for path in sorted(set(files)):
-            relative = path.relative_to(root).as_posix()
+            relative = path.relative_to(skill).as_posix()
             info = zipfile.ZipInfo('automated-gdd/' + relative, date_time=(2026, 1, 1, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
@@ -62,14 +66,17 @@ def main():
         with zipfile.ZipFile(archive) as package:
             if package.testzip() is not None:
                 raise ValueError('Corrupt ZIP member')
+            if set(package.namelist()) != {'automated-gdd/' + p for p in relative_paths}:
+                raise ValueError('Archive must contain only installable skill files')
             package.extractall(scratch)
         extracted = scratch / 'automated-gdd'
         for path in files:
-            if path.read_bytes() != (extracted / path.relative_to(root)).read_bytes():
+            if path.read_bytes() != (extracted / path.relative_to(skill)).read_bytes():
                 raise ValueError('Archive differs from source: ' + str(path))
-        for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)', readme):
-            if not target.startswith(('https://', 'http://', '#')) and not (extracted / target.split('#')[0]).is_file():
-                raise ValueError('Broken README link inside release ZIP: ' + target)
+        for path in extracted.rglob('*.md'):
+            for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)', path.read_text(encoding='utf-8')):
+                if not target.startswith(('https://', 'http://', '#')) and not (path.parent / target.split('#')[0]).is_file():
+                    raise ValueError('Broken skill link inside release ZIP: ' + target)
         project = scratch / 'test game'
         (project / 'design').mkdir(parents=True)
         original = '# Local rules\n\nKeep these instructions.\n'
@@ -90,7 +97,7 @@ def main():
     checksum = hashlib.sha256(archive.read_bytes()).hexdigest()
     (dist / 'SHA256SUMS').write_text(checksum + '  automated-gdd.zip\n', encoding='utf-8')
     print('Built dist/automated-gdd.zip and dist/SHA256SUMS')
-    print('Verified archive bytes, English README, local links, and extracted CLI setup/render/validation.')
+    print('Verified minimal archive contents, source bytes, document links, and extracted CLI setup/render/validation.')
     return 0
 
 

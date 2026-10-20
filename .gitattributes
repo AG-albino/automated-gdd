@@ -1,3 +1,13 @@
 * text=auto eol=lf
 *.zip binary
 *.png binary
+
+# Keep maintainer files out of GitHub source archives.
+/.github export-ignore
+/tests export-ignore
+/tools export-ignore
+/docs export-ignore
+/AGENTS.md export-ignore
+/llms.txt export-ignore
+/.gitignore export-ignore
+/.gitattributes export-ignore
